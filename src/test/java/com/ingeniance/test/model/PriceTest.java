@@ -10,15 +10,18 @@ import com.ingeniance.model.Price;
 
 public class PriceTest {
 	@Test
-    public void twoPricesShouldBeAdded() throws Exception {
-        Price price = new Price(10);
-        Price otherPrice = new Price(12);
-        assertEquals(price.add(otherPrice).getPrice(), BigDecimal.valueOf(22f));
-    }
+	public void twoPricesShouldBeAdded() throws Exception {
+		Price price = new Price(10);
+		Price otherPrice = new Price(12);
+		assertEquals(price.add(otherPrice)
+				.getPrice(), BigDecimal.valueOf(22f));
+	}
+
 	@Test
-    public void amountShouldBeMultipliedToPrice() throws Exception {
-        Price price = new Price(10);
-        int amount = 4;
-        assertEquals(price.multiply(amount).getPrice(), BigDecimal.valueOf(40f));
-    }
+	public void amountShouldBeMultipliedToPrice() throws Exception {
+		Price price = new Price(10);
+		int amount = 4;
+		assertEquals(BigDecimal.valueOf(40f),price.multiply(amount)
+				.getPrice() );
+	}
 }
