@@ -1,27 +1,25 @@
 package com.ingeniance.test.model;
 
 import static org.junit.Assert.assertEquals;
-
-import java.math.BigDecimal;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import com.ingeniance.model.Price;
+import com.ingeniance.model.Product;
+import com.ingeniance.test.utility.TestName;
+import com.ingeniance.test.utility.TestPrice;
+import com.ingeniance.test.utility.TestProduct;
 
 public class ProductTest {
-	@Test
-	public void twoPricesShouldBeAdded() throws Exception {
-		Price price = new Price(10);
-		Price otherPrice = new Price(12);
-		assertEquals(BigDecimal.valueOf(22f),price.add(otherPrice)
-				.getPrice());
-	}
+	public static class BuilderTest {
+       
+        @Test
+        public void instanceShouldBeCreated() throws Exception {
+            Product product = TestProduct.YOGHURT.toProduct();
 
-	@Test
-	public void amountShouldBeMultipliedToPrice() throws Exception {
-		Price price = new Price(10);
-		int amount = 4;
-		assertEquals(BigDecimal.valueOf(40f),price.multiply(amount)
-				.getPrice());
-	}
+            assertNotNull(product);
+            assertEquals(TestName.YOGHURT.toName(),product.getProductName());
+            assertEquals(TestPrice.TWENTY.toPrice(),product.getUnitPrice());
+        }
+    }
 }
