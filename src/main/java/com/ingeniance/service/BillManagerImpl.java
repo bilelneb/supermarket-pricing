@@ -10,7 +10,11 @@ import java.util.Set;
 import com.ingeniance.model.Discount;
 import com.ingeniance.model.Price;
 import com.ingeniance.model.Product;
-
+/**
+ * This class is the implementation of the bill service
+ * @author binebli
+ *
+ */
 public class BillManagerImpl implements BillManager {
 	private Map<Product, BigDecimal> checkoutList = new HashMap<Product, BigDecimal>();
 	private Set<Discount> discounts = new HashSet<Discount>();

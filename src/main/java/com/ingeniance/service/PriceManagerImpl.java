@@ -6,7 +6,11 @@ import java.util.Optional;
 import com.ingeniance.model.Discount;
 import com.ingeniance.model.Price;
 import com.ingeniance.model.Product;
-
+/**
+ * This class is the implementation of the price service
+ * @author binebli
+ *
+ */
 public class PriceManagerImpl implements PriceManager {
 
 	@Override
@@ -18,8 +22,7 @@ public class PriceManagerImpl implements PriceManager {
 		}
 	}
 
-	@Override
-	public Price calculateWithDiscount(Product p, BigDecimal amount, Discount d) {
+	private Price calculateWithDiscount(Product p, BigDecimal amount, Discount d) {
 		BigDecimal reductionRequiredAmount = BigDecimal.valueOf(d.getAmount());
 		BigDecimal[] numberOfPackagesToCalculate = amount.divideAndRemainder(reductionRequiredAmount);
 		BigDecimal reductionValue = d.getDiscountPrice().getPrice();
@@ -29,8 +32,7 @@ public class PriceManagerImpl implements PriceManager {
 		return new Price(reducedPrice.add(unreducedPrice));
 	}
 
-	@Override
-	public Price calculateWithoutDiscount(Product p, BigDecimal amount) {
+	private Price calculateWithoutDiscount(Product p, BigDecimal amount) {
 		return new Price(p.getUnitPrice()
 				.getPrice()
 				.multiply(amount));
