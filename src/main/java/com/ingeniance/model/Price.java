@@ -13,6 +13,10 @@ public class Price {
 		super();
 		this.price = BigDecimal.valueOf(price);
 	}
+	public Price(BigDecimal price) {
+		super();
+		this.price = price;
+	}
 
 	public BigDecimal getPrice() {
 		return price;
